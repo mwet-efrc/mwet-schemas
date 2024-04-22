@@ -7,6 +7,10 @@ For more information about the workflow, check out this [gitlab](https://gitlab.
 ## Overview
 The file nmr.yaml defines the classes NMRDataset. This contains all metadata that is common for 1D NMR data, which includes:
 - owner
+- email
+- instrument_name
+- principal_investigator
+- proposal
 - acquisition_date
 - sample
 - nuclide
@@ -59,3 +63,4 @@ python script.py my-nmr-metadata.csv output.json
 
 ## Next Step
 - schema for 2d NMR data
+- github action that generate the json schema and puts it in a public location -> github page

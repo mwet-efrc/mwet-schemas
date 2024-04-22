@@ -19,11 +19,31 @@ classes:
         description: "Owner of the data"
         range: string
         required: true
+      email:
+        title: Owner email
+        description: Email of the owner
+        range: string
+        required: true
+      instrument_name:
+        title: Instrument name
+        description: Instrument name
+        range: string
+        required: true
+      principal_investigator:
+        title: PI
+        description: PI name
+        range: string
+        required: true
+      proposal:
+        title: Proposal
+        description: Proposal or proposal ID
+        range: string
+        required: true
       acquisition_date:
         title: Acquisition date
         description: "Date of the measurement or calculation"
         range: date
-        required: true
+        required: false
       sample:
         title: Sample description
         description: "Description of the same under study"

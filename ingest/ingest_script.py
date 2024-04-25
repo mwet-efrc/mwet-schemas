@@ -52,68 +52,9 @@ pattern = None
 ingestor_location = None
 override_iterator = False
 ingest_files_iter = []
-if INGEST_SPEC == "als_11012_igor":
-    pattern = f"{ROOT_FOLDER}/CCD/*/dat/"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/als_11012_igor.py")
-elif INGEST_SPEC == "als_11012_scattering":
-    pattern = f"{ROOT_FOLDER}/CCD/*/"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/als_11012_scattering.py")
-elif INGEST_SPEC == "als_11012_nexafs":
-    pattern = f"{ROOT_FOLDER}/Nexafs/*"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/nexafs.py")
-elif INGEST_SPEC == "nsls2_rsoxs_sst1":
-    pattern = f"{ROOT_FOLDER}/*/"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/nsls2_RSoXS.py")
-elif INGEST_SPEC == "nsls2_nexafs_sst1":
-    override_iterator = True
-    pattern = f"{ROOT_FOLDER}/*"
-    ingest_files_iter = glob.iglob(pattern)
-    ingest_files_arr = []
-    for file_str in ingest_files_iter:
-        if file_str.endswith(".log") or file_str.endswith(".csv") or file_str.endswith(".txt"):
-            continue
-        ingest_files_arr.append(file_str)
-    ingest_files_iter = ingest_files_arr
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/nsls2_nexafs_sst1.py")
-elif INGEST_SPEC == "als733_saxs":
-    pattern = f"{ROOT_FOLDER}/*.txt"
-    override_iterator = True
-    ingest_files_iter = glob.iglob(pattern)
-    ingest_files_arr = []
-    for file_str in ingest_files_iter:
-        # Matt Landsman said not to include these in ingestion
-        if "autoexpose" in file_str or "beamstop_test" in file_str:
-            continue
-        ingest_files_arr.append(file_str)
-    ingest_files_iter = ingest_files_arr
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/als_733_SAXS.py")
-elif INGEST_SPEC == "nsls2_trexs_smi":
-    pattern = f"{ROOT_FOLDER}/*/"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/nsls2_TREXS_smi.py")
-elif INGEST_SPEC == "polyfts_dscft":
-    pattern = f"{ROOT_FOLDER}/*/"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/phip_sim.py")
-elif INGEST_SPEC == "amd_gromacs":
-    pattern = f"{ROOT_FOLDER}/*/"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/amd_gromacs.py")
-elif INGEST_SPEC == "als_632_nexafs":
-    pattern = f"{ROOT_FOLDER}/*"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/als_632_nexafs.py")
-elif INGEST_SPEC == "733_gisaxs_bladecoating":
-    assert type(DERIVED_FOLDER) == str and len(DERIVED_FOLDER) != 0 
-    is_derived_folder = True
-    pattern = f"{ROOT_FOLDER}/*/"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/733_gisaxs_bladecoating.py")
-elif INGEST_SPEC == "SMI_gisaxs_bladecoating":
-    type(DERIVED_FOLDER) == str and len(DERIVED_FOLDER) != 0 
-    is_derived_folder = True
-    pattern = f"{ROOT_FOLDER}/*/"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/nsls_smi_bladecoating.py")
-elif INGEST_SPEC == "als_nmr":
-    print("ah")
+if INGEST_SPEC == "als_nmr":
     pattern = f"{ROOT_FOLDER}/*.csv"
-    ingestor_location = pathlib.Path(os.getcwd(), "scicat_beamline/ingestors/als_nmr.py")
-
+    ingestor_location = pathlib.Path(os.getcwd(), "als_nmr.py")
 else:
     raise Exception("Environment variable 'INGEST_SPEC' is invalid.")
 

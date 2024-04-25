@@ -1,0 +1,18 @@
+[project]
+name = "linkml_nmr_scicat_ingesting"
+version = "0.0.1"
+authors = [
+  { name="Runbo Jiang", email="rjiang2@lbl.gov" },
+]
+description = "A package to ingest nmr data to SciCat"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/als-computing/mwet-schemas"
+Issues = "https://github.com/als-computing/mwet-schemas/issues"

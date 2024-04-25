@@ -61,6 +61,15 @@ Specify the input csv file an output json file.
 python script.py my-nmr-metadata.csv output.json
 ```
 
+### 5. Ingest NMR data and metadata
+An example metadata file named ```example-nmr-metadata.csv``` is provided, as well as an example data file named ```example-nmr-metadata.csv``` for ingesting to [SciCat](https://github.com/SciCatProject/pyscicat) database. 
+
+To ingest the nmr data and metadata to [local SciCat](https://github.com/SciCatProject/scicatlive) database:
+1. install [scicatlive](https://github.com/SciCatProject/scicatlive) and run it locally with Docker
+2. install all packages in ```requirements.txt``` file
+3. create a ```.env``` file following the pattern in ```example_env.env```
+4. run ```python ingest_script.py ``` to ingest the example data
+
 ## Next Step
 - schema for 2d NMR data
 - github action that generate the json schema and puts it in a public location -> github page

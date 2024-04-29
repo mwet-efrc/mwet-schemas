@@ -23,7 +23,6 @@ ingest = [
   "pyscicat",
   "typer",
   "matplotlib",
-  "scicat_beamline@git+https://github.com/als-computing/scicat_beamline.git"
 ]
 
 [project.urls]

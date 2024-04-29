@@ -1,3 +1,5 @@
 *.tsv
 *.json
+src/mwet_schemas.egg-info/
+*.env
 .DS_Store

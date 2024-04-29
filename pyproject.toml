@@ -12,6 +12,19 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+dependencies = [
+          "linkml"
+          ]
+
+[project.optional-dependencies]
+ingest = [
+  "python-dotenv",
+  "pandas",
+  "pyscicat",
+  "typer",
+  "matplotlib",
+]
+
 [project.urls]
 Homepage = "https://github.com/als-computing/mwet-schemas"
 Issues = "https://github.com/als-computing/mwet-schemas/issues"

@@ -1,5 +1,5 @@
 [project]
-name = "linkml_nmr_scicat_ingesting"
+name = "mwet-schemas"
 version = "0.0.1"
 authors = [
   { name="Runbo Jiang", email="rjiang2@lbl.gov" },

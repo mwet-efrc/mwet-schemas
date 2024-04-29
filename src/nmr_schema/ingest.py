@@ -9,7 +9,7 @@ import typer
 
 from pyscicat.client import from_credentials, from_token
 
-from scicat_beamline.utils import Issue
+# from scicat_beamline.utils import Issue
 
 logger = logging.getLogger('scicat_ingest')
 logger.setLevel('INFO')

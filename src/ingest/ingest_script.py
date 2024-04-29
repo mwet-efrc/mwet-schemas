@@ -20,15 +20,6 @@ if os.path.exists(env_file_path):
 else:
     print(f"The file '{env_file_path}' does not exist.")
 
-
-# Examples of the vars from the .env file
-#ROOT_FOLDER=/home/j/programming/work/October_data
-#SCICAT_URL=https://mwet.lbl.gov/api/v3
-#USERNAME=username
-#INGEST_USER=username
-#PASSWORD=password
-#INGEST_SPEC=als_11012_igor OR als_11012_scattering OR als_11012_nexafs
-
 ROOT_FOLDER = os.getenv("ROOT_FOLDER")
 SCICAT_URL = os.getenv("SCICAT_URL")
 USERNAME = os.getenv("USERNAME")

@@ -23,7 +23,31 @@ The file nmr.yaml defines the classes NMRDataset. This contains all metadata tha
 
 ## Getting started
 
-You need to install LinkML if you wish to work directly with these files. The [Quick Install Guide](https://linkml.io/linkml/intro/install.html) page describes how to do this.
+### 0. Setup environment
+
+[LinkML](https://linkml.io/linkml/intro/tutorial.html) if you wish to work directly with these files. The [Quick Install Guide](https://linkml.io/linkml/intro/install.html) page gives more detailed information. 
+
+1. Create a new conda environment
+
+```
+conda create -n linkml python=3.10
+conda activate linkml
+```
+
+2. Install linkml package
+
+```
+python -m pip install -e .
+```
+
+3. If you are interested in ingesting example data to the SciCat database
+
+```
+python -m pip install -e ".[ingest]"
+```
+
+This command will install ingesting required packages, as specify in the ```pyproject.toml``` file.
+
 
 ### 1. Schemasheets
 
@@ -65,10 +89,15 @@ python script.py my-nmr-metadata.csv output.json
 An example metadata file named ```example-nmr-metadata.csv``` is provided, as well as an example data file named ```example-nmr-metadata.csv``` for ingesting to [SciCat](https://github.com/SciCatProject/pyscicat) database. 
 
 To ingest the nmr data and metadata to [local SciCat](https://github.com/SciCatProject/scicatlive) database:
-1. install [scicatlive](https://github.com/SciCatProject/scicatlive) and run it locally with Docker
-2. install all packages in ```requirements.txt``` file
-3. create a ```.env``` file following the pattern in ```example_env.env```
-4. run ```python ingest_script.py ``` to ingest the example data
+1. install packages as described in step 0:
+
+```
+python -m pip install -e ".[ingest]"
+```
+
+3. create a ```.env``` file following the pattern in ```example_env.env`` in the nmr_schema folder
+`
+4. run ```python ingest_nmr.py ``` to ingest the example data
 
 ## Next Step
 - schema for 2d NMR data

@@ -86,9 +86,10 @@ python script.py my-nmr-metadata.csv output.json
 ```
 
 ### 5. Ingest NMR data and metadata
-An example metadata file named ```example-nmr-metadata.csv``` is provided, as well as an example data file named ```example-nmr-metadata.csv``` for ingesting to [SciCat](https://github.com/SciCatProject/pyscicat) database. 
+An example metadata file named ```example-nmr-metadata.csv``` is provided, as well as an example data file named ```example-nmr-metadata.csv``` for ingesting to [SciCat](https://github.com/SciCatProject/pyscicat) database. This data was acquired at University of California, Santa Barbara by Leo Gordon and Raphaële Clément.
 
 To ingest the nmr data and metadata to [local SciCat](https://github.com/SciCatProject/scicatlive) database:
+
 1. install packages as described in step 0:
 
 ```

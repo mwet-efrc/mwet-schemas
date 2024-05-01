@@ -2,8 +2,6 @@ from datetime import datetime
 from pathlib import Path
 import logging
 from collections import OrderedDict
-from pathlib import Path
-from typing import List
 import pandas as pd
 
 from pyscicat.client import (

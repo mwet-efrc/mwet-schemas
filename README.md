@@ -1,25 +1,16 @@
 # NMR metadata schema using LinkML
 
-This repository contains [LinkML](https://linkml.io/) description of metadata description of NMR data.
+This repository contains code to help manage schemas and workflows for managing data for the MWET project. There are several workflows supported:
 
-For more information about the workflow, check out this [gitlab](https://gitlab.desy.de/ric/opendata-metadata) tutorial.
+1. Maintian an publish a list metadata fields that are collected for various techniques. For this, the [LinkML](https://linkml.io/) and its expressive schema definition format is used. In this repository, we manage the LinkML schema.
 
-## Overview
-The file nmr.yaml defines the classes NMRDataset. This contains all metadata that is common for 1D NMR data, which includes:
-- owner
-- email
-- instrument_name
-- principal_investigator
-- proposal
-- acquisition_date
-- sample
-- nuclide
-- sepctrometer_frequency
-- magnetic_field
-- concentration
-- solvent
-- pulse_program
-- gradient_list
+2. Using LinkML, produce [JSON Schema](https://json-schema.org/) files for the LinkML Schemas. These published JSON Schemas will be maintained in GitHub and re-built whenever the accompanying LinkML schema changes in this repostiory.
+
+3. The MWET repsotory uses [SciCat](https://scicatproject.github.io/) to manage datasets. SciCat has a very flexible "Scientific Metadata" dictionary for each collected dataset. JSON Schemas can be used by the ingestion code to validate incoming Scientific Metadata on ingest.
+
+
+<!-- For more information about the workflow, check out this [gitlab](https://gitlab.desy.de/ric/opendata-metadata) tutorial. -->
+
 
 ## Getting started
 

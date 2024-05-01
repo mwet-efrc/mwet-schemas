@@ -3,6 +3,7 @@ version: v0.0.1
 name: nmr-1d
 prefixes:
   linkml: https://w3id.org/linkml/
+  nmr: https://github.com/als-computing/mwet-schema/src/nmr_schema/nmr.yaml
 imports:
   - linkml:types
 default_range: string

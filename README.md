@@ -1,29 +1,44 @@
 # NMR metadata schema using LinkML
 
-This repository contains [LinkML](https://linkml.io/) description of metadata description of NMR data.
+This repository contains code to help manage schemas and workflows for managing data for the MWET project. There are several workflows supported:
 
-For more information about the workflow, check out this [gitlab](https://gitlab.desy.de/ric/opendata-metadata) tutorial.
+1. Maintian an publish a list metadata fields that are collected for various techniques. For this, the [LinkML](https://linkml.io/) and its expressive schema definition format is used. In this repository, we manage the LinkML schema.
 
-## Overview
-The file nmr.yaml defines the classes NMRDataset. This contains all metadata that is common for 1D NMR data, which includes:
-- owner
-- email
-- instrument_name
-- principal_investigator
-- proposal
-- acquisition_date
-- sample
-- nuclide
-- sepctrometer_frequency
-- magnetic_field
-- concentration
-- solvent
-- pulse_program
-- gradient_list
+2. Using LinkML, produce [JSON Schema](https://json-schema.org/) files for the LinkML Schemas. These published JSON Schemas will be maintained in GitHub and re-built whenever the accompanying LinkML schema changes in this repostiory.
+
+3. The MWET repsotory uses [SciCat](https://scicatproject.github.io/) to manage datasets. SciCat has a very flexible "Scientific Metadata" dictionary for each collected dataset. JSON Schemas can be used by the ingestion code to validate incoming Scientific Metadata on ingest.
+
+
+<!-- For more information about the workflow, check out this [gitlab](https://gitlab.desy.de/ric/opendata-metadata) tutorial. -->
+
 
 ## Getting started
 
-You need to install LinkML if you wish to work directly with these files. The [Quick Install Guide](https://linkml.io/linkml/intro/install.html) page describes how to do this.
+### 0. Setup environment
+
+[LinkML](https://linkml.io/linkml/intro/tutorial.html) if you wish to work directly with these files. The [Quick Install Guide](https://linkml.io/linkml/intro/install.html) page gives more detailed information.
+
+1. Create a new conda environment
+
+```
+conda create -n linkml python=3.10
+conda activate linkml
+```
+
+2. Install linkml package
+
+```
+python -m pip install -e .
+```
+
+3. If you are interested in ingesting example data to the SciCat database
+
+```
+python -m pip install -e ".[ingest]"
+```
+
+This command will install ingesting required packages, as specify in the ```pyproject.toml``` file.
+
 
 ### 1. Schemasheets
 
@@ -62,14 +77,43 @@ python script.py my-nmr-metadata.csv output.json
 ```
 
 ### 5. Ingest NMR data and metadata
-An example metadata file named ```example-nmr-metadata.csv``` is provided, as well as an example data file named ```example-nmr-metadata.csv``` for ingesting to [SciCat](https://github.com/SciCatProject/pyscicat) database. 
+An example metadata file named ```example-nmr-metadata.csv``` is provided, as well as an example data file named ```example-nmr-metadata.csv``` for ingesting to [SciCat](https://github.com/SciCatProject/pyscicat) database. This data was acquired at University of California, Santa Barbara by Leo Gordon and Raphaële Clément.
 
 To ingest the nmr data and metadata to [local SciCat](https://github.com/SciCatProject/scicatlive) database:
-1. install [scicatlive](https://github.com/SciCatProject/scicatlive) and run it locally with Docker
-2. install all packages in ```requirements.txt``` file
-3. create a ```.env``` file following the pattern in ```example_env.env```
-4. run ```python ingest_script.py ``` to ingest the example data
+
+1. install packages as described in step 0:
+
+```
+python -m pip install -e ".[ingest]"
+```
+
+3. create a ```.env``` file following the pattern in ```example_env.env``` in the nmr_schema folder
+`
+4. run ```python ingest_nmr.py ``` to ingest the example data
 
 ## Next Step
 - schema for 2d NMR data
 - github action that generate the json schema and puts it in a public location -> github page
+
+
+## Developer Setup
+If you are developing this library, there are a few things to note.
+
+1. Install development dependencies:
+
+```
+pip install .[dev]
+```
+
+2. Install pre-commit
+This step will setup the pre-commit package. After this, commits will get run against flake8, black, isort.
+
+```
+pre-commit install
+```
+
+3. (Optional) If you want to check what pre-commit would do before commiting, you can run:
+
+```
+pre-commit run --all-files
+```

@@ -23,9 +23,20 @@ ingest = [
   "pyscicat",
   "typer",
   "matplotlib",
-  "scicat_beamline@git+https://github.com/als-computing/scicat_beamline.git"
+]
+
+# These are required for developing the package (running the tests, building
+# the documentation) but not necessarily required for _using_ it.
+dev = [
+    "flake8",
+    "pre-commit",
+    "pytest-mock"
 ]
 
 [project.urls]
 Homepage = "https://github.com/als-computing/mwet-schemas"
 Issues = "https://github.com/als-computing/mwet-schemas/issues"
+
+
+[tool.isort]
+profile = "black"

@@ -30,9 +30,13 @@ ingest = [
 dev = [
     "flake8",
     "pre-commit",
-    "pytest-mock"   
+    "pytest-mock"
 ]
 
 [project.urls]
 Homepage = "https://github.com/als-computing/mwet-schemas"
 Issues = "https://github.com/als-computing/mwet-schemas/issues"
+
+
+[tool.isort]
+profile = "black"

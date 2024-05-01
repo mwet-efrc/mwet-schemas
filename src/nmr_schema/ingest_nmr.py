@@ -1,8 +1,10 @@
 import glob
-from dotenv import load_dotenv
 import os
-from ingest import ingest
 import pathlib
+
+from dotenv import load_dotenv
+from ingest import ingest
+
 load_dotenv()
 
 
@@ -28,12 +30,12 @@ PASSWORD = os.getenv("PASSWORD")
 INGEST_SPEC = os.getenv("INGEST_SPEC")
 DERIVED_FOLDER = os.getenv("DERIVED_FOLDER")
 
-assert type(ROOT_FOLDER) == str and len(ROOT_FOLDER) != 0 
-assert type(SCICAT_URL) == str and len(SCICAT_URL) != 0 
-assert type(USERNAME) == str and len(USERNAME) != 0 
-assert type(PASSWORD) == str and len(PASSWORD) != 0 
-assert type(INGEST_USER) == str and len(INGEST_USER) != 0 
-assert type(INGEST_SPEC) == str and len(INGEST_SPEC) != 0 
+assert type(ROOT_FOLDER) is str and len(ROOT_FOLDER) != 0
+assert type(SCICAT_URL) is str and len(SCICAT_URL) != 0
+assert type(USERNAME) is str and len(USERNAME) != 0
+assert type(PASSWORD) is str and len(PASSWORD) != 0
+assert type(INGEST_USER) is str and len(INGEST_USER) != 0
+assert type(INGEST_SPEC) is str and len(INGEST_SPEC) != 0
 
 is_derived_folder = False
 
@@ -57,6 +59,24 @@ for ingest_file_str in ingest_files_iter:
     if ingest_file_path.exists():
         print(ingest_file_path)
         if is_derived_folder is False:
-            ingest(ingestor_location, ingest_file_path, None,  INGEST_USER, SCICAT_URL, token=None, username=USERNAME, password=PASSWORD)
+            ingest(
+                ingestor_location,
+                ingest_file_path,
+                None,
+                INGEST_USER,
+                SCICAT_URL,
+                token=None,
+                username=USERNAME,
+                password=PASSWORD,
+            )
         else:
-            ingest(ingestor_location, ingest_file_path, pathlib.Path(DERIVED_FOLDER), INGEST_USER, SCICAT_URL, token=None, username=USERNAME, password=PASSWORD)
+            ingest(
+                ingestor_location,
+                ingest_file_path,
+                pathlib.Path(DERIVED_FOLDER),
+                INGEST_USER,
+                SCICAT_URL,
+                token=None,
+                username=USERNAME,
+                password=PASSWORD,
+            )

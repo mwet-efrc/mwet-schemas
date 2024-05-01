@@ -25,7 +25,7 @@ The file nmr.yaml defines the classes NMRDataset. This contains all metadata tha
 
 ### 0. Setup environment
 
-[LinkML](https://linkml.io/linkml/intro/tutorial.html) if you wish to work directly with these files. The [Quick Install Guide](https://linkml.io/linkml/intro/install.html) page gives more detailed information. 
+[LinkML](https://linkml.io/linkml/intro/tutorial.html) if you wish to work directly with these files. The [Quick Install Guide](https://linkml.io/linkml/intro/install.html) page gives more detailed information.
 
 1. Create a new conda environment
 
@@ -103,3 +103,26 @@ python -m pip install -e ".[ingest]"
 ## Next Step
 - schema for 2d NMR data
 - github action that generate the json schema and puts it in a public location -> github page
+
+
+## Developer Setup
+If you are developing this library, there are a few things to note.
+
+1. Install development dependencies:
+
+```
+pip install .[dev]
+```
+
+2. Install pre-commit
+This step will setup the pre-commit package. After this, commits will get run against flake8, black, isort.
+
+```
+pre-commit install
+```
+
+3. (Optional) If you want to check what pre-commit would do before commiting, you can run:
+
+```
+pre-commit run --all-files
+```

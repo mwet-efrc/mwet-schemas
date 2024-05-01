@@ -2,20 +2,23 @@ import csv
 import json
 import sys
 
+
 def csv_to_json(csv_file, json_file):
     # Open the CSV file and read its contents
-    with open(csv_file, 'r') as file:
+    with open(csv_file, "r") as file:
         csv_data = csv.DictReader(file)
         # Convert CSV data to a list of dictionaries
         data = list(csv_data)
 
     # Remove spaces from keys and values
     for entry in data:
-        entry_no_spaces = {key.replace(" ", ""): value.replace(" ", "") for key, value in entry.items()}
+        entry_no_spaces = {
+            key.replace(" ", ""): value.replace(" ", "") for key, value in entry.items()
+        }
         data[data.index(entry)] = entry_no_spaces
 
     # Write the JSON data to a file
-    with open(json_file, 'w') as file:
+    with open(json_file, "w") as file:
         json.dump(data, file, indent=4)
 
 

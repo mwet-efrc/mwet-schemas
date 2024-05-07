@@ -8,6 +8,7 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3  # Checks out your repository under $GITHUB_WORKSPACE
@@ -22,15 +23,17 @@ jobs:
 
     - name: Generate JSON Schema
       run: |
-        gen-json-schema --closed src/nmr_schema/nmr_schema.yaml  >nmr.schema.json  # Generate JSON schema
+        mkdir -p docs/json-schemas
+        gen-json-schema --closed src/nmr_schema/nmr_schema.yaml  >docs/json-schemas/nmr_schema.json  # Generate JSON schema
+        git commit -am '[action] update schema'
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: './'  # Directory containing files to publish
-        publish_branch: gh-pages  # Assumes you're using a branch named gh-pages
-        keep_files: true  # Set to false if you want a clean deploy each time
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
-        commit_message: 'Deploy JSON schema to GitHub Pages'
+    # - name: Deploy to GitHub Pages
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.DYLAN_PERSONAL_ACCESS_TOKEN }}
+    #     publish_dir: './docs'  # Directory containing files to publish
+    #     publish_branch: gh-pages  # Assumes you're using a branch named gh-pages
+    #     keep_files: true  # Set to false if you want a clean deploy each time
+    #     user_name: 'github-actions[bot]'
+    #     user_email: 'github-actions[bot]@users.noreply.github.com'
+    #     commit_message: 'Deploy JSON schema to GitHub Pages'

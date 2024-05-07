@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main  # This should match your main development branch
+    paths:
+      - 'index.html'  # Include paths to all relevant static files you want to deploy
+      - 'css/**'      # Example if you have a CSS directory
+      - 'json-schemas/**'  # Include any directories holding content you want to deploy
+      - '.github/workflows/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  # Specifies the runner environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Checks out your repository under $GITHUB_WORKSPACE
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DYLAN_PERSONAL_ACCESS_TOKEN }}  # Uses a built-in GitHub token for authentication
+          publish_dir: './docs'  # The directory where your index.html and other files are located
+          publish_branch: gh-pages  # The branch that GitHub Pages uses to serve your site (ensure this matches your repository settings)
+          keep_files: true  # Optional: set to false to allow cleanup of old files on the deploy branch

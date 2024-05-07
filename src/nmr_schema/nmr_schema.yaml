@@ -1,7 +1,7 @@
 id: https://mwet.utexas.edu/metadata/nmr
 name: nmr-1d
 description: |-
-  Metadata about NMR data sets.
+  Metadata about NMR data sets
 imports:
   - linkml:types
 prefixes:

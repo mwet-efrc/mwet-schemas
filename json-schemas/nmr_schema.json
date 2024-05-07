@@ -1,0 +1,96 @@
+{
+    "$defs": {
+        "Container": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "datasets": {
+                    "items": {
+                        "$ref": "#/$defs/NMRDataset"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "Container",
+            "type": "object"
+        },
+        "NMRDataset": {
+            "additionalProperties": false,
+            "description": "The metadata associated with a 1D NMR dataset.",
+            "properties": {
+                "acquisition_date": {
+                    "type": "string"
+                },
+                "aliases": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "concentration": {
+                    "type": "string"
+                },
+                "gradient_list": {
+                    "type": "string"
+                },
+                "instrument_name": {
+                    "type": "string"
+                },
+                "magnetic_field": {
+                    "type": "string"
+                },
+                "nuclide": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "owner_email": {
+                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
+                    "type": "string"
+                },
+                "principal_investigator": {
+                    "type": "string"
+                },
+                "proposal": {
+                    "type": "string"
+                },
+                "pulse_program": {
+                    "type": "string"
+                },
+                "sample": {
+                    "type": "string"
+                },
+                "sepctrometer_frequency": {
+                    "type": "number"
+                },
+                "solvent": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "owner",
+                "owner_email",
+                "instrument_name"
+            ],
+            "title": "NMRDataset",
+            "type": "object"
+        }
+    },
+    "$id": "https://mwet.utexas.edu/metadata/nmr",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": false,
+    "description": "",
+    "metamodel_version": "1.7.0",
+    "properties": {
+        "datasets": {
+            "items": {
+                "$ref": "#/$defs/NMRDataset"
+            },
+            "type": "array"
+        }
+    },
+    "title": "nmr-1d",
+    "type": "object",
+    "version": null
+}
